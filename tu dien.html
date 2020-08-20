@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <input type="text" id="english"/>
+    <input type="button" value="Convert" onclick="English()"><br>
+    <p id="sub"></p>
+</form>
+</body>
+</html>
+<script>
+    let ENG = ['hello', 'fun', 'sad', 'cry'];
+    let VIET = ['xin chào', 'vui', 'buồn', 'khóc'];
+    function English() {
+        let input=document.getElementById("english").value;
+        if(ENG.indexOf(input)!==-1){
+            document.getElementById("sub").innerHTML=VIET[ENG.indexOf(input)];
+        } else {
+            alert("Không tìm thấy")
+        }
+    }
+</script>
