@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="board"></p>
+<input type="button" value="Play" onclick="playGame()">
+</body>
+</html>
+<script>
+    let arr = [];
+    for (i = 0; i < 3; i++) {
+        arr[i] = [".", ".", "."];
+    }
+    let data = "";
+    for (i = 0; i < 3; i++) {
+        data += "<br>";
+        for (j = 0; j < 3; j++) {
+            data += arr[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp;";
+        }
+    }
+    document.getElementById("board").innerHTML = data;
+    let turn = "x";
+
+    function playGame() {
+        x = parseInt(prompt("Enter position X: "));
+        y = parseInt(prompt("Enter position Y: "));
+        if (arr[x][y] === ".") {
+            arr[x][y] = turn;
+            let data = "";
+            for (i = 0; i < 3; i++) {
+                data += "<br>";
+                for (j = 0; j < 3; j++) {
+                    data += arr[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp;";
+                }
+            }
+
+            if (turn === "x") {
+                turn = "o";
+            } else {
+                turn = "x";
+            }
+            document.getElementById("board").innerHTML = data;
+        } else {
+            alert("Choose another position!");
+        }
+        if (((arr[0][0] === arr[0][1]) && (arr[0][1] === arr[0][2]) && (arr[0][0] !== ".")) ||
+            ((arr[1][0] === arr[1][1]) && (arr[1][1] === arr[1][2]) && (arr[1][0] !== ".")) ||
+            ((arr[2][0] === arr[2][1]) && (arr[2][1] === arr[2][2]) && (arr[2][0] !== ".")) ||
+            ((arr[0][0] === arr[1][0]) && (arr[1][0] === arr[2][0]) && (arr[0][0] !== ".")) ||
+            ((arr[0][1] === arr[1][1]) && (arr[1][1] === arr[2][1]) && (arr[0][1] !== ".")) ||
+            ((arr[0][2] === arr[1][2]) && (arr[1][2] === arr[2][2]) && (arr[0][2] !== ".")) ||
+            ((arr[0][0] === arr[1][1]) && (arr[1][1] === arr[2][2]) && (arr[0][0] !== ".")) ||
+            ((arr[0][2] === arr[1][1]) && (arr[1][1] === arr[2][0]) && (arr[0][2] !== "."))) {
+            alert("Congrats!");
+        } else if ((arr[0][0] !== ".") && (arr[0][1] !== ".") && (arr[0][2] !== ".") && (arr[1][0] !== ".") && (arr[1][1] !== ".") &&
+            (arr[1][2] !== ".") && (arr[2][0] !== ".") && (arr[2][1] !== ".") && (arr[2][2] !== ".")) {
+            alert("End Game!");
+        }
+    }
+
+</script>
