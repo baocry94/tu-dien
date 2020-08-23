@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Type anthing slowly</h2>
+<textarea id="key" cols="40" rows="=20" onkeydown="typing()"></textarea>
+</body>
+</html>
+<script>
+    let a = ["X", "i", "n", " ", "C", "h", "à", "o", " ", "B", "ạ", "n"];
+    let result = "";
+
+    function typing() {
+        let b = document.getElementById("key").value;
+        if (b.length > 0) {
+            for (let i = 0; i < b.length; i++) {
+                result += a[i];
+                if (i === 12) {
+                    b = "";
+                    result = "";
+                }
+            }
+        }
+        document.getElementById("key").value = result;
+        result = "";
+    }
+</script>
